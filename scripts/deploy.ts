@@ -1,8 +1,7 @@
 import {ethers} from 'hardhat';
-import {Giveaway, GiveawayCollection} from '../typechain-types';
+import {GiveawayCollection} from '../typechain-types';
 
 async function main() {
-
     const [deployer] = await ethers.getSigners();
 
     console.log('Deploying from: ' + deployer.address);
@@ -22,15 +21,8 @@ async function main() {
     await bronzeCollection.deployed();
 
     console.log(goldCollection.address, silverCollection.address, bronzeCollection.address);
-
-    let giveaway: Giveaway;
-    let giveawayFactory = await ethers.getContractFactory('Giveaway');
-
-    giveaway = await giveawayFactory.deploy(goldCollection.address, silverCollection.address, bronzeCollection.address);
-    await giveaway.deployed();
-
-    console.log("Giveaway deployed to: ", giveaway.address);
 }
+
 
 // We recommend this pattern to be able to use async/await everywhere
 // and properly handle errors.

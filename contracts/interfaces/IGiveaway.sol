@@ -3,9 +3,9 @@ pragma solidity ^0.8.0;
 
 interface IGiveaway {
 
-    event Participation(address participant, uint256 giveawayID);
+    event Participation(address participant, uint256 giveawayID, address token);
     event GiveawayCreated(uint256 giveawayID);
-    event WinnerPicked(uint256 giveawayID, address winner);
+    event WinnerPicked(uint256 giveawayID, uint256 treasurySize, address winner);
     event Withdrawal();
 
     struct Giveaway {
@@ -13,5 +13,8 @@ interface IGiveaway {
         bytes32 description;
         uint256 treasurySize;
         address[] participants;
+        address winner;
     }
+
+
 }
